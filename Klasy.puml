@@ -1,11 +1,50 @@
 @startuml
-'https://plantuml.com/sequence-diagram
 
-autonumber
+class Main {
+    + main(String[] args)
+}
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+class Faktura {
+    - fakturaData: Date
+    - sprzedawca: Sklep
+    - kupujacy: Sklep
+    - przedmioty: ArrayList<Produkty>
+    + Faktura(fakturaData: Date, sprzedawca: Sklep, kupujacy: Sklep)
+    + podajDate(): Date
+    + cenaNetto(): double
+    + wartoscVAT(): double
+    + CenaKoncowa(): double
+    + dodajProdukt(produkt: Produkty): void
+    + podajProdukty(): ArrayList<Produkty>
+}
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+class Sklep {
+    - nazwa: String
+    - adres: String
+    - nip: String
+    + Sklep(nazwa: String, adres: String, nip: String)
+    + podajDane(): String
+    + podajAdres(): String
+    + podajNIP(): String
+}
+
+class Produkty {
+    - produkt: String
+    - ilosc: int
+    - cena: double
+    + Produkty(produkt: String, ilosc: int, cena: double)
+    + podajCenaNetto(): double
+    + podajWartoscVAT(): double
+    + podajCene(): double
+    + podajIlosc(): int
+    + podajProdukt(): String
+    + toString(): String
+}
+
+Main --> Faktura
+Main --> Sklep
+Main --> Produkty
+Faktura --> Sklep
+Faktura --> Produkty
+
 @enduml

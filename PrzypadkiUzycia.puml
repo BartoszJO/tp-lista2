@@ -1,11 +1,21 @@
 @startuml
-'https://plantuml.com/sequence-diagram
 
-autonumber
+left to right direction
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+actor User as U
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+rectangle "Program" {
+    usecase "Pokaż koszyk" as UC1
+    usecase "Dodaj samochody" as UC2
+    usecase "Wystaw fakturę" as UC3
+    usecase "Dostępne samochody" as UC4
+    usecase "Wyjście" as UC5
+}
+
+U --> UC1 : Wybiera
+U --> UC2 : Wybiera
+U --> UC3 : Wybiera
+U --> UC4 : Wybiera
+U --> UC5 : Wybiera
+
 @enduml
