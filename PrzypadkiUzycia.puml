@@ -1,21 +1,48 @@
 @startuml
-
-left to right direction
-
-actor User as U
-
-rectangle "Program" {
-    usecase "Pokaż koszyk" as UC1
-    usecase "Dodaj samochody" as UC2
-    usecase "Wystaw fakturę" as UC3
-    usecase "Dostępne samochody" as UC4
-    usecase "Wyjście" as UC5
-}
-
-U --> UC1 : Wybiera
-U --> UC2 : Wybiera
-U --> UC3 : Wybiera
-U --> UC4 : Wybiera
-U --> UC5 : Wybiera
-
+start
+:Utwórz scanner;
+:Utwórz sprzedawca;
+:Utwórz kupujący;
+:Utwórz fakturę;
+:Wyświetl menu;
+repeat
+  :Pobierz odpowiedź;
+  if (odpowiedź == 1) then (Tak)
+    :Wyświetl koszyk;
+  else (Nie)
+    if (odpowiedź == 2) then (Tak)
+      :Wyświetl dostępne auta;
+    else (Nie)
+      if (odpowiedź == 3) then (Tak)
+        :Dodaj nowy samochód;
+        :Pobierz nazwę, ilość i cenę;
+        :Utwórz nowy produkt;
+        :Dodaj produkt do faktury;
+        :Samochód dodany do faktury;
+      else (Nie)
+        if (odpowiedź == 4) then (Tak)
+          :Wyświetl fakturę;
+          :Wyświetl dane faktury;
+          :Wyświetl dane sprzedawcy;
+          :Wyświetl dane kupującego;
+          :Wyświetl produkty w fakturze;
+          :Wyświetl cenę netto;
+          :Wyświetl VAT;
+          :Wyświetl cenę brutto;
+        else (Nie)
+          if (odpowiedź == 5) then (Tak)
+            :Dodaj dane kupującego;
+            :Pobierz dane kupującego;
+            :Utwórz nowego kupującego;
+            :Dane kupującego zaktualizowane;
+          else (Nie)
+            :Wyświetl komunikat o nieprawidłowym wyborze;
+          endif
+        endif
+      endif
+    endif
+  endif
+repeat while (odpowiedź != 0)
+:Zakończ działanie programu;
+stop
 @enduml

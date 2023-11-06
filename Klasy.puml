@@ -1,10 +1,11 @@
 @startuml
-
-class Main {
-    + main(String[] args)
-}
-
-class Faktura {
+package technologiaprogramowania {
+  class Main {
+    + main(args: String[]): void
+    + wyswietlMenu(): void
+    + wyswietlAuta(): void
+  }
+  class Faktura {
     - fakturaData: Date
     - sprzedawca: Sklep
     - kupujacy: Sklep
@@ -16,9 +17,8 @@ class Faktura {
     + CenaKoncowa(): double
     + dodajProdukt(produkt: Produkty): void
     + podajProdukty(): ArrayList<Produkty>
-}
-
-class Sklep {
+  }
+  class Sklep {
     - nazwa: String
     - adres: String
     - nip: String
@@ -26,25 +26,21 @@ class Sklep {
     + podajDane(): String
     + podajAdres(): String
     + podajNIP(): String
-}
-
-class Produkty {
+  }
+  class Produkty {
     - produkt: String
     - ilosc: int
     - cena: double
     + Produkty(produkt: String, ilosc: int, cena: double)
     + podajCenaNetto(): double
     + podajWartoscVAT(): double
-    + podajCene(): double
-    + podajIlosc(): int
-    + podajProdukt(): String
     + toString(): String
+  }
+  Main --> Faktura: Utworzenie
+  Main --> Sklep: Utworzenie sprzedawcy
+  Main --> Sklep: Utworzenie kupującego
+  Main --> Faktura: Utworzenie faktury
+  Faktura --> Produkty: Dodawanie produktów
+  Faktura --> Sklep: Podawanie danych
 }
-
-Main --> Faktura
-Main --> Sklep
-Main --> Produkty
-Faktura --> Sklep
-Faktura --> Produkty
-
 @enduml
