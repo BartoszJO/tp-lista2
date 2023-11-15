@@ -19,6 +19,14 @@ public class Faktura {
         return fakturaData;
     }
 
+    public String podajDaneSprzedawcy() {
+        return sprzedawca.podajDane();
+    }
+
+    public String podajDaneKupujacego() {
+        return kupujacy.podajDane();
+    }
+
     public double cenaNetto() {
         double cena_Netto = 0.0;
         for (Produkty produkt : przedmioty) {

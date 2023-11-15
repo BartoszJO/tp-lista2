@@ -36,7 +36,7 @@ package technologiaprogramowania {
     + podajWartoscVAT(): double
     + toString(): String
   }
-  Main --> Faktura: Utworzenie
+
   Main --> Sklep: Utworzenie sprzedawcy
   Main --> Sklep: Utworzenie kupującego
   Main --> Faktura: Utworzenie faktury

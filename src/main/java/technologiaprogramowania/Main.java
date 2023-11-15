@@ -68,6 +68,9 @@ public class Main {
                     System.out.println("VAT: " + faktura.wartoscVAT());
                     System.out.println("Cena brutto: " + faktura.CenaKoncowa());
                     System.out.println("--------------------");
+
+                    BazaDanychMySQL.dodajFakture(faktura);
+
                     break;
                 case 5:
                     System.out.println("Dodawanie danych kupującego: ");
